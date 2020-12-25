@@ -108,4 +108,31 @@
 		<servlet-name>LogOutServlet</servlet-name>
 		<url-pattern>/logout</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AdminLoginServlet</servlet-name>
+		<servlet-class>servlet.AdminLoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminLoginServlet</servlet-name>
+		<url-pattern>/adminlogin</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>RoleUpdateServlet</servlet-name>
+		<servlet-class>servlet.RoleUpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RoleUpdateServlet</servlet-name>
+		<url-pattern>/roleupdate</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>UserDeleteServlet</servlet-name>
+		<servlet-class>servlet.UserDeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserDeleteServlet</servlet-name>
+		<url-pattern>/userdelete</url-pattern>
+	</servlet-mapping>
 </web-app>

@@ -11,7 +11,7 @@
 		pageContext.setAttribute("Identity",Identity);
 	}
 	List<Teacher> searchlist=(ArrayList)request.getAttribute("searchlist");
-	System.out.println(searchlist);%>
+	//System.out.println(searchlist);%>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -103,6 +103,9 @@
                     </a>
                     <a href="signup.html">
                         <button type="button" class="join92">注册</button>
+                    </a>
+                    <a href="adminlogin.html">
+                        <button type="button" class="join92">管理员登陆</button>
                     </a>
                 </div>
                 </c:if>

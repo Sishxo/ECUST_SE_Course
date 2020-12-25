@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import DAO.ConnectionPool;
+import bean.Teacher;
 import bean.User;
 
 public class UserDAO {
@@ -184,5 +185,33 @@ public class UserDAO {
 		//}).start();
 		//System.out.println(user.DialNumber);
 		return user;
+	}
+	
+	public List getall(){
+		String sql="select * from user";
+		ResultSet rs=null;
+		List<User> userlist=new ArrayList<User>();
+		try(Connection c=DriverManager.getConnection(URL,USER_NAME,USER_PASSWORD);
+			PreparedStatement ps=c.prepareStatement(sql);){
+			rs=ps.executeQuery();
+			while(rs.next()){
+				User user=new User();
+				user.setUserId(rs.getInt("user.UserId"));
+				user.setDialNumber(rs.getString("DialNumber"));
+				user.setEmail(rs.getString("Email"));
+				user.setGender(rs.getString("Gender"));
+				user.setCollege(rs.getString("College"));
+				user.setMajor(rs.getString("Major"));
+				user.setGrade(rs.getString("Grade"));
+				user.setUserName(rs.getString("UserName"));
+				user.setPassword(rs.getString("Password"));
+				user.setIdentityID(rs.getInt("IdentityID"));
+				userlist.add(user);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}	
+		//System.out.println(userlist);
+		return userlist;
 	}
 }
