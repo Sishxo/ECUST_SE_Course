@@ -1,0 +1,83 @@
+.overlay {
+			position: fixed; /* 将遮罩层铺满整个屏幕 */
+	top: 0;
+	z-index: 10;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: #abababcc; /* 设置遮罩层背景色为有点透明的浅灰色 */
+	display: none; /* 设置遮罩层默认不显示 */
+	justify-content: center; /* 设置弹窗左右居中 */
+}
+/* 弹出窗 */
+.dialog {
+	z-index: 11; /* 为弹窗指定更高的z-index，以便绘制在遮罩层的上层 */
+	width: 500px; /* 设置弹窗宽度 */
+	height: auto; /* 设置弹窗高度 */
+	background: #fff; /* 设置弹窗背景色为白色 */
+	align-self: center; /* 设置弹窗上下居中 */
+	display: flex; /* 设置弹窗内布局为flex布局 */
+	flex-direction: column; /* 设置弹窗内flex布局方向为垂直方向 */
+	border-radius: 4px; /* 设置弹窗有4px的圆角 */
+}
+.dialog-header {
+	background: #ccc; /* 设置弹窗头部的背景色为灰色 */
+	display: flex; /* 设置弹窗头部的布局为flex布局 */
+	margin: .2em; /* 设置弹窗头部的外边距 */
+	padding: .2em .2em .2em .5em; /* 设置弹窗头部的内边距 */
+	height: 2.5em; /* 设置弹窗头部的高度 */
+	border-radius: 3px; /* 设置弹窗头部的圆角 */
+	align-items: center; /* 设置弹窗头部的内容上下居中 */
+}
+.dialog-header .dialog-title {
+	flex-grow: 1; /* 设置弹窗头部的标题部分充满剩余空间 */
+}
+.dialog-header .dialog-close-icon {
+	background: #e6e6e6; /* 设置弹窗头部的关闭按钮背景色 */
+	padding: .1em .35em; /* 设置弹窗头部的关闭按钮内边距 */
+	margin-right: .2em; /* 设置弹窗头部的外边距 */
+	cursor: pointer; /* 设置弹窗头部的关闭按钮的鼠标样式 */
+	border-radius: 3px; /* 设置弹窗头部的关闭按钮的圆角 */
+}
+.dialog-header .dialog-close-icon:hover {
+	background: #666; /* 设置弹窗头部的关闭按钮鼠标悬浮背景色 */
+}
+.dialog-header .dialog-close-icon:after { /* 设置弹窗头部的关闭按钮的内容（x） */
+	content: "\d7";
+	font-size: 1.2em;
+	color: #666;
+}
+.dialog-header .dialog-close-icon:hover:after {
+	color: #fff;
+}
+.dialog-content {
+	flex-grow: 1; /* 设置弹窗内容部分充满剩余空间 */
+	margin: 0 .2em; /* 设置弹窗内容部分的外边距 */
+}
+.dialog-footer {
+	border-style: solid; /* 设置弹窗底部的边框样式为实线 */
+	border-width: 1px 0 0; /* 设置弹窗底部只有上边框 */
+	padding: .5em; /* 设置弹窗底部的内边距 */
+	margin: 0 .2em; /* 设置弹窗底部的外边距 */
+	display: flex; /* 设置弹窗底部的布局为flex布局 */
+	justify-content: flex-end; /* 设置弹窗底部的内容右对齐 */
+}
+.dialog-footer .btn{ /* 设置弹窗底部的按钮样式 */
+	font-size: medium;
+	width: 5em;
+	margin: .2em .5em;
+	padding: .5em;
+}
+.btn { /* 设置按钮样式 */
+	border: 0;
+	border-radius: 3px;
+	padding: 1em;
+	font-size: large;
+	background: #ccc;
+	width: 8em;
+}
+.btn:hover { /* 设置按钮的悬浮样式 */
+	background: #666;
+	color: #fff;
+	cursor: pointer;
+}

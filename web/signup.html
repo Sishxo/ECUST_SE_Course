@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>ECUST Forum</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="css/loginstyle.css">
+
+
+</head>
+
+<body>
+
+  <div class="modal-wrap">
+
+    <div class="modal-bodies">
+      <div class="modal-body modal-body-step-1 is-showing">
+        <div class="title">注册 ECUST Forum</div>
+        <div class="description">你好，完成以下内容注册账号</div>
+        <form action="addUser" method="post">
+		  <input type="radio" name="Identity" placeholder="身份*" value="学生" />学生
+          <input type="radio" name="Identity" placeholder="身份*" value="教师"/>教师
+          <br> </br>	
+          <input type="radio" name="Grade" placeholder="年级" value="大一" />大一
+          <input type="radio" name="Grade" placeholder="年级" value="大二"/>大二
+          <input type="radio" name="Grade" placeholder="年级" value="大三"/>大三
+          <input type="radio" name="Grade" placeholder="年级" value="大四"/>大四
+          <input type="text" name="UserName" placeholder="用户名*" />
+          <input type="text" name="DialNumber" placeholder="电话号码*" />
+          <input type="email" name="Email" placeholder="邮件地址*" />
+          <input type="text" name="Gender" placeholder="性别" />
+          <input type="text" name="College" placeholder="学校" />
+          <input type="text" name="Major" placeholder="专业" />
+          <input type="password" name="Password" id="pwd1" placeholder="密码*" />
+          <input type="password" name="Password" id="pwd2" placeholder="确认密码*" onkeyup="validate()"><span id="reminder"></span>
+          <div class="text-center">
+            <button  class="button" id="regist" type="submit">注册</div>
+          </div>
+        </form>
+      </div>
+
+
+    </div>
+  </div>
+  <script src="js/jquery-3.1.1.min.js"></script>
+	<script>
+
+	function validate() {
+	    var pwd1 = document.getElementById("pwd1").value;
+	    var pwd2 = document.getElementById("pwd2").value;
+	<!-- 对比两次输入的密码 -->
+	    if(pwd1 == pwd2)
+	     {
+	        document.getElementById("reminder").innerHTML="<font color='green'>两次密码相同</font>";
+	        document.getElementById("regist").disabled = false;
+	     }
+	else {
+	        document.getElementById("reminder").innerHTML="<font color='red'>两次密码不相同</font>";
+	        document.getElementById("regist").disabled = true
+     }
+
+}
+
+</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</body>
+
+</html>

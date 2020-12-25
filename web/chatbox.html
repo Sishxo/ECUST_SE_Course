@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat System</title>
+   
+    <!--    Bootstrap CSS  -->
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <!--    My CSS  -->
+    <link rel="stylesheet" href="css/chatstyle.css">
+
+</head>
+
+<body>
+    <div id="wrapper" class="container-fluid">
+
+        <div class="container-fluid chat_wrapper">
+            <div class="brand">
+                <h1 align=center><a href="#info" class="info" data-toggle="tooltip" data-placement="bottom">聊天室</a></h1>
+            </div>
+            <div id="chat" class="chatdisplay">
+            </div>
+            <form id="ChatForm">
+                <div class="form-group" id="form-submit">
+                    <div class="div1" id="sendimage">
+                        <div class="div2" id="sendimage">发送图片</div>
+                        <input type="file" class="inputstyle">
+                    </div>
+                    <div class="div1" id="senddoc">
+                        <div class="div2" id="senddoc">发送文件</div>
+                        <input type="file" class="inputstyle">
+                    </div>
+                    <a href="https://meeting.tencent.com/index.html"><button type="button" class="button3" id="launchvideo">发起视频</button></a>
+                    <input type="text" name="message" id="textfield" class="textarea" placeholder="Type a Message ..." autocomplete="off">
+                    <button type="submit" class="button1">发送</button>
+                    <a href="information.html" target="_blank"><button type="goback" class="button2" >返回</button></a>
+                </div>
+            </form>
+        </div>
+    </div>
+     
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="js/chatjss.js"></script>
+    <script type="text/javascript">
+    	// $(document).ready(function(){
+    	// 	$('textfield').keypress(function(e){
+    	// 		if(e.which == 13){
+    	// 			$('form-submit').submit();
+    	// 		}
+    	// 	});
+    	// });
+    	$("textfield").keypress(function (e) {
+    if(e.which == 13 && $("textfield").value != "") {        
+        $("ChatForm").submit();
+        e.preventDefault();
+        return false;
+    }
+});
+
+    </script>
+
+    
+
+   
+</body>
+
+</html>

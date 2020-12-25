@@ -1,0 +1,431 @@
+<%@ page  language="java" pageEncoding="UTF-8" import="bean.User,DAO.UserDAO,java.util.Date,java.text.SimpleDateFormat"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html lang="zh">
+<%
+	User user=(User)session.getAttribute("user");
+	//System.out.println(flag);
+%>
+<!--加了个链接jquery-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>师徒关系</title>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/animate.css" rel="stylesheet" type="text/css">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+
+<body>
+
+
+    <!-- ==========header mega navbar=======-->
+    <div class="top-menu-bottom932">
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle
+                            navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                            class="icon-bar"></span> </button>
+                    <a class="navbar-brand" href="#">
+                        <p>ECUST Knowledge Share</p>
+                    </a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav"> </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="index.jsp">主页 </a></li>
+                       
+                        <li><a href="information.jsp" target="_self" >个人信息 </a></li>
+                       
+                        
+                        <li><a href="teachinfo.jsp" target="_self" >拜师信息 </a></li>
+                       
+                        <c:if test="${user!=null}">
+                        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false"><%=user.getUserName()%> <span class="caret"></span></a>
+                            <ul class="dropdown-menu animated zoomIn">
+                                <li><a href="logout" >注销 </a></li>
+                            </ul>
+                        </li>
+                        </c:if>
+                       
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+    </div>
+
+
+
+
+
+
+    <!-- ======content section/body=====-->
+    <section class="main-content920">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div id="main">
+                        <input id="tab1" type="radio" name="tabs" checked>
+                        <label for="tab1">未处理的拜师申请</label>
+                        <input id="tab2" type="radio" name="tabs">
+                        <label for="tab2">已处理的拜师申请</label>
+
+                        <section id="content1">
+                            <!--Recent Question Content Section -->
+                            <div class="question-type2033">
+                                
+								
+
+<!--和index.html一样的做法--> 
+<!--点击名字，触发弹窗-->                                  
+                            
+
+<!-- **************下面是弹窗的主体代码************* -->
+<!-- dialog-1: 在按钮触发时通过id指定触发哪个弹窗。overlay: 指示遮罩层元素 -->
+  <div id="dialog-1" class="overlay">
+    <!-- dialog：指示弹窗窗体。 -->
+  	<div class="dialog">
+  		<!-- dialog-header：指示弹窗头部。 -->
+	  	<div class="dialog-header">
+	  	    <!-- dialog-title：指示弹窗标题。 -->
+	  		<div class="dialog-title">申请详情</div>
+	  		<!-- dialog-close-icon：指示关闭按钮样式。dialog-close：指示关闭弹窗触发器 -->
+	  		<div class="dialog-close-icon dialog-close"></div>
+	  	</div>
+	  	<!-- dialog-content：指示弹窗内容。 -->
+	  	<div class="dialog-content">                            
+									
+        <div class="col-md-9">
+             <div class="right-description893">
+                <div id="que-hedder2983">
+                    <h3>
+                        <img width=45 height=45 src="image/images.png" alt="image"><a>David Li</a>
+                    </h3>
+                </div>
+        <div class="ques-details10018">
+            <p>电话号码：9841324587</p>
+            <p>Collage: 华东理工大学</p>            
+            <p>Email: 101899
+            <p>Major: 计算机科学
+            </div>
+             
+            </div>
+            </div>
+					
+	  	</div>
+	  	<!-- dialog-footer：指示弹窗底部。 -->
+	  	<div class="dialog-footer">
+	  	    <!-- btn：指示普通按钮样式。-->
+<!-- 需修改，传递参数--><button onclick = "window.location.href = 'baishi.jsp'" class="btn">同意</button>
+            <button onclick = "window.location.href = 'baishi.jsp'" class="btn">拒绝</button>	  		
+			<button onclick = "window.location.href = 'liaotian.jsp'" class="btn">聊天</button>
+
+	  	</div>
+	</div>
+  </div>
+
+                                    <div class="row">
+                                    <div class="col-md-1">
+                                        <div class="left-user12923 left-user12923-repeat">
+                                            <a href="#">
+                                                <img src="image/images.png" alt="image"> 
+                                            </a> 
+                                            <a href="#">
+                                                <i class="fa fa-check" aria-hidden="true"></i>
+                                            </a> 
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="right-description893">
+                                            <div id="que-hedder2983">
+                                                <h3>
+<!-- 上次忘记说，这里是触发弹窗的机制 -->         <a id="alert-window" target="_blank">冯翔</a>
+                                                </h3> 
+                                            </div>
+                                            <div class="ques-details10018">
+                                                <p>电话号码：64252931</p>
+                                                <p>电话号码：64252931</p>
+                                                <p>email: xfeng@ecust.edu.cn</p>
+                                                <p>工作地点: 二教304</p> 
+                                                <p>研究方向: 智能计算，人工智能，分布并行计算
+                                                <p>学院:  计算机科学与工程学院
+                                            </div>
+                                            <hr>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="ques-type302">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+
+<!--CSS JS部分，只能放在这里，放在其他地方就显示混乱，不懂为啥，我就不会改啦-->   
+<!--我估计CSS JS部分应该写个文档提出去，但是我不会..嘎嘎--> 
+
+<!--CSS part-->
+<style type="text/css">
+		/* 遮罩层 */
+		.overlay {
+			position: fixed; /* 将遮罩层铺满整个屏幕 */
+			top: 0;
+			z-index: 10;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background: #abababcc; /* 设置遮罩层背景色为有点透明的浅灰色 */
+			display: none; /* 设置遮罩层默认不显示 */
+			justify-content: center; /* 设置弹窗左右居中 */
+		}
+		/* 弹出窗 */
+		.dialog {
+			z-index: 11; /* 为弹窗指定更高的z-index，以便绘制在遮罩层的上层 */
+			width: 500px; /* 设置弹窗宽度 */
+			height: auto; /* 设置弹窗高度 */
+			background: #fff; /* 设置弹窗背景色为白色 */
+			align-self: center; /* 设置弹窗上下居中 */
+			display: flex; /* 设置弹窗内布局为flex布局 */
+			flex-direction: column; /* 设置弹窗内flex布局方向为垂直方向 */
+			border-radius: 4px; /* 设置弹窗有4px的圆角 */
+		}
+		.dialog-header {
+			background: #ccc; /* 设置弹窗头部的背景色为灰色 */
+			display: flex; /* 设置弹窗头部的布局为flex布局 */
+			margin: .2em; /* 设置弹窗头部的外边距 */
+			padding: .2em .2em .2em .5em; /* 设置弹窗头部的内边距 */
+			height: 2.5em; /* 设置弹窗头部的高度 */
+			border-radius: 3px; /* 设置弹窗头部的圆角 */
+			align-items: center; /* 设置弹窗头部的内容上下居中 */
+		}
+		.dialog-header .dialog-title {
+			flex-grow: 1; /* 设置弹窗头部的标题部分充满剩余空间 */
+		}
+		.dialog-header .dialog-close-icon {
+			background: #e6e6e6; /* 设置弹窗头部的关闭按钮背景色 */
+			padding: .1em .35em; /* 设置弹窗头部的关闭按钮内边距 */
+			margin-right: .2em; /* 设置弹窗头部的外边距 */
+			cursor: pointer; /* 设置弹窗头部的关闭按钮的鼠标样式 */
+			border-radius: 3px; /* 设置弹窗头部的关闭按钮的圆角 */
+		}
+		.dialog-header .dialog-close-icon:hover {
+			background: #666; /* 设置弹窗头部的关闭按钮鼠标悬浮背景色 */
+		}
+		.dialog-header .dialog-close-icon:after { /* 设置弹窗头部的关闭按钮的内容（x） */
+			content: "\d7";
+			font-size: 1.2em;
+			color: #666;
+		}
+		.dialog-header .dialog-close-icon:hover:after {
+			color: #fff;
+		}
+		.dialog-content {
+			flex-grow: 1; /* 设置弹窗内容部分充满剩余空间 */
+			margin: 0 .2em; /* 设置弹窗内容部分的外边距 */
+		}
+		.dialog-footer {
+			border-style: solid; /* 设置弹窗底部的边框样式为实线 */
+			border-width: 1px 0 0; /* 设置弹窗底部只有上边框 */
+			padding: .5em; /* 设置弹窗底部的内边距 */
+			margin: 0 .2em; /* 设置弹窗底部的外边距 */
+			display: flex; /* 设置弹窗底部的布局为flex布局 */
+			justify-content: flex-end; /* 设置弹窗底部的内容右对齐 */
+		}
+		.dialog-footer .btn{ /* 设置弹窗底部的按钮样式 */
+			font-size: medium;
+			width: 5em;
+			margin: .2em .5em;
+			padding: .5em;
+		}
+		.btn { /* 设置按钮样式 */
+			border: 0;
+			border-radius: 3px;
+			padding: 1em;
+			font-size: large;
+			background: #ccc;
+			width: 8em;
+		}
+		.btn:hover { /* 设置按钮的悬浮样式 */
+			background: #666;
+			color: #fff;
+			cursor: pointer;
+		}
+	</style>
+	
+<!--js part-->
+<script type="text/javascript">
+    // 弹出弹窗的方法，参数为class为overlay的元素id。
+  	function openDialog(dialogId){
+  	    //设置遮罩层为flex布局，显示遮罩层和弹窗。
+  		$("#"+dialogId+"").css("display", "flex"); 
+  	}
+  	// 关闭弹窗的事件处理。为想要关闭弹窗的按钮添加'dialog'类即可。
+  	$(".dialog-close").click(function(){
+  		//找到当前关闭弹窗按钮所在的遮罩层，并隐藏。
+  		$(this).parents(".overlay").hide(); 
+  	});
+  </script>
+  <script type="text/javascript">
+    // alert-window：点击后显示弹框的元素id。
+    // dialog-1：弹框遮罩层元素的id。
+  	$("#alert-window").click(function(){
+  		openDialog("dialog-1");
+  	});
+  </script>
+
+
+
+<!--下面就没有了，最后应该是循环展示，写一个应该就可以吧-->
+
+
+                              
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <div class="left-user12923 left-user12923-repeat">
+                                            <a href="#">
+                                                <img src="image/images.png" alt="image">
+                                            </a>
+                                            <a href="#">
+                                                <i class="fa fa-check" aria-hidden="true"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="right-description893">
+                                            <div id="que-hedder2983">
+                                                <h3>
+                                                    <a href="information.jsp" target="_blank">金晶</a>
+                                                </h3>
+                                            </div>
+                                            <div class="ques-details10018">
+                                                <p>电话号码：642538080</p>
+                                                <p>email: jinjing@ecust.edu.cn</p>
+                                                <p>工作地点:研究生楼1105东</p>
+                                                <p>研究方向: 脑机接口技术及应用；外骨骼机器人应用与设计，智能机器人控制，机器学习与模式识别
+                                                <p>学院:  信息科学与工程学院
+                                            </div>
+                                            <hr>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="ques-type302">
+                                            <!--a href="#">
+                                                <button type="button" class="q-type238"><i class="fa fa-comment" aria-hidden="true"> 3 回答</i></button>
+                                            </a>
+                                            <a href="#">
+                                                <button type="button" class="q-type23 button-ques2973"> <i class="fa fa-user-circle-o" aria-hidden="true"> 70 浏览</i> </button>
+                                            </a-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!--  End of content-1------>
+
+                        <section id="content2">
+                            <!--Most Response Content Section -->
+							<div class="question-type2033">
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <div class="left-user12923 left-user12923-repeat">
+                                        <a href="#">
+                                            <img src="image/images.png" alt="image">
+                                        </a>
+                                        <a href="#">
+                                            <i class="fa fa-check" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="right-description893">
+                                        <div id="que-hedder2983">
+                                            <h3>
+                                                <a href="information.jsp" target="_blank">金晶</a>
+                                            </h3>
+                                        </div>
+                                        <div class="ques-details10018">
+                                            <p>电话号码：642538080</p>
+                                            <p>email: jinjing@ecust.edu.cn</p>
+                                            <p>工作地点:研究生楼1105东</p>
+                                            <p>研究方向: 脑机接口技术及应用；外骨骼机器人应用与设计，智能机器人控制，机器学习与模式识别
+                                            <p>学院:  信息科学与工程学院
+                                        </div>
+                                        <hr>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="ques-type302">
+                                        <!--a href="#">
+                                            <button type="button" class="q-type238"><i class="fa fa-comment" aria-hidden="true"> 3 回答</i></button>
+                                        </a>
+                                        <a href="#">
+                                            <button type="button" class="q-type23 button-ques2973"> <i class="fa fa-user-circle-o" aria-hidden="true"> 70 浏览</i> </button>
+                                        </a-->
+                                    </div>
+                                </div>
+                            </div>
+							</div>
+                        </section>
+
+                        <!----end of content-2----->
+
+                    </div>
+                </div>
+                <!--end of col-md-9 -->
+                <!--strart col-md-3 (side bar)-->
+                
+            </div>
+        </div>
+    </section>
+    <!--    footer -->
+    <div class="footer-search">
+        <div class="container">
+            <div class="row">
+                <div id="custom-search-input">
+                    <div class="input-group col-md-12"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        <input type="text" class="  search-query form-control user-control30"
+                            placeholder="在这里搜索......" /> <span class="input-group-btn">
+                            <button class="btn btn-danger" type="button">
+                                <span class=" glyphicon glyphicon-search"></span> </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="footer-social">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Copyright 2020 ECUST Forum | <strong>Sun and teammates</strong></p>
+                </div>
+                <div class="col-md-6">
+                    <div class="social-right2389"> <a href="#"><i class="fa fa-twitter-square"
+                                aria-hidden="true"></i></a> <a href="#"><i class="fa fa-facebook"
+                                aria-hidden="true"></i></a> <a href="#"><i class="fa fa-google-plus"
+                                aria-hidden="true"></i></a> <a href="#"><i class="fa fa-youtube"
+                                aria-hidden="true"></i></a> <a href="#"><i class="fa fa-skype"
+                                aria-hidden="true"></i></a> <a href="#"><i class="fa fa-linkedin"
+                                aria-hidden="true"></i></a> <a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/npm.js"></script>
+</body>
+
+</html>

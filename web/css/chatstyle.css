@@ -1,0 +1,190 @@
+body {
+    /*    background-color: antiquewhite;*/
+    background-color:#ff7361;
+    background-size: cover;
+    color: rgb(255, 255, 255);
+
+}
+
+.container-fluid {
+    margin: 5px auto;
+    display: block;
+    padding-top: 5px;
+
+}
+
+.brand {
+    margin: auto;
+    display: block;
+}
+
+.brand h1 {
+
+    font-family: sans-serif;
+}
+
+a.info {
+    color: #ff7361;
+    text-decoration: none;
+}
+
+a.info:hover,
+a.info:visited {
+    text-decoration: none !important;
+}
+
+.chat_wrapper {
+    background-color:white;
+    width: 70%;
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 7px;
+    height: auto;
+
+}
+
+.textarea {
+    overflow-y: scroll;
+    background-size: cover;
+    height: 80px;
+    width: 95.2%;
+    margin-top: 5px;
+    margin-left:20px;
+  
+    border-radius: 7px;
+    border: 1.5px solid #ff7361;
+    padding: 10px;
+    color:rgb(75, 72, 72);
+}
+
+.chatdisplay {
+    height: 200px;
+    border-radius: 7px;
+    background-size: cover;
+    border: 1.5px solid #ff7361;
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    overflow-y: scroll;
+}
+
+.sendbtn {
+
+    margin-top: 5px;
+    margin-right: 8.5px;
+    min-width: 100px;
+    box-shadow: 7px 7px 10px 0px rgba(0, 0, 0, 0.56);
+
+
+}
+
+.form-group {
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+
+.box {
+    border: 2px;
+    border-radius: 7px;
+    margin: 5px auto;
+    box-shadow: 7px 7px 10px 0px rgba(0, 0, 0, 0.56);
+    padding: 10px;
+    background-color:#ff7361;
+    overflow: hidden;
+    max-width: 60%;
+    min-width: 30%;
+    float: left;
+    clear: left;
+}
+.box.system-msg {
+    border: 4px;
+    border-radius: 7px;
+    margin: auto auto 10px auto;
+    box-shadow: 7px 7px 10px 0px rgba(0, 0, 0, 0.56);
+    padding: 10px;
+    overflow: hidden;
+    max-width: 60%;
+    min-width: 30%;
+    float: right;
+    clear: right;
+    background-color:white;
+    color:rgb(31, 30, 30);
+    border-color:#ff7361;
+}
+.box span {
+    float: right;
+    font-size: 12px;
+    font-family: monospace;
+}
+
+.button1 {
+  width: 95.2%;
+  margin-right: 20px;
+  margin-left:20px;
+  margin-top: 10px;
+  padding: 10px 20px;
+  border-radius: 3px;
+  background:  white;
+  color:#FF7361;
+  border: 1.5px solid #ff7361;
+  letter-spacing: 1px;
+}
+.button2 {
+    border: 1.5px solid #ff7361;
+    width: 95.2%;
+    margin-right: 20px;
+    margin-left:20px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    border-radius: 3px;
+    background: #FF7361;
+    color: white;
+    letter-spacing: 1px;
+  }
+  .button3{
+    border: 1.5px solid #ff7361;
+    margin-left:20px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    padding: 8px 15px;
+    border-radius: 3px;
+    background:white;
+    color: #FF7361;
+    letter-spacing: 1px;
+    display:inline;
+  }
+
+.div1 {
+
+    float: left;
+    height: 36px;
+    margin-left:20px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    background: white;
+    width: 88px;
+    position: relative;
+    border: 1.5px solid #ff7361;
+    border-radius: 3px;
+}
+.div2 {
+    color: #FF7361;
+    text-align: center;
+    padding: 8px 15px;
+    font-size: 8px;
+    font-weight: 400;
+}
+.inputstyle {
+    width: 88px;
+    height: 36px;
+    cursor: pointer;
+    outline: medium none;
+    position: absolute;
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+    opacity: 0;
+    left: 0px;
+    top: 0px;
+}
+
