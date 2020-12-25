@@ -29,6 +29,15 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>backUserAddServlet</servlet-name>
+		<servlet-class>servlet.backUserAddServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>backUserAddServlet</servlet-name>
+		<url-pattern>/backAddUser</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>UserUpdateServlet</servlet-name>
 		<servlet-class>servlet.UserUpdateServlet</servlet-class>
 	</servlet>

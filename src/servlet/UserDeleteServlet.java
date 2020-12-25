@@ -16,7 +16,7 @@ public class UserDeleteServlet extends HttpServlet {
 			throws ServletException,IOException{
 			request.setCharacterEncoding("UTF-8");
 			int id=Integer.parseInt(request.getParameter("userid"));
-			
+			System.out.println("test");
 			new UserDAO().delete(id);
 			
 			response.sendRedirect("manage.jsp");

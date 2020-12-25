@@ -17,9 +17,11 @@ public class RoleUpdateServlet extends HttpServlet {
 			request.setCharacterEncoding("UTF-8");
 			User user=new UserDAO().get(Integer.parseInt(request.getParameter("userid")));
 			int IdentityId=Integer.parseInt(request.getParameter("identityid"));
+			//System.out.println(IdentityId);
+			//System.out.println(user.UserName);
 			user.setIdentityID(IdentityId);
-			
-			new UserDAO().update(user);
+			//System.out.println(user.IdentityID);
+			new UserDAO().roleupdate(user);
 			
 			response.sendRedirect("manage.jsp");
 		}

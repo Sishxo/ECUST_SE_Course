@@ -10,7 +10,7 @@
 	if(user==null){
 		response.sendRedirect("index.jsp");
 	}
-	//List<Teacher> searchlist=(ArrayList)request.getAttribute("searchlist");
+	List<Teacher> searchlist=(ArrayList)request.getAttribute("searchlist");
 	//System.out.println(searchlist);
 %>
 <head>
@@ -23,6 +23,10 @@
     <link href="css/animate.css" rel="stylesheet" type="text/css">
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <script src="js/manage.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
 </head>
 <body>
     <!-- ==========header mega navbar=======-->
@@ -63,137 +67,97 @@
 
 
     <!--======= welcome section on top background=====-->
-    
-
-
-<br>
-<div class="container">
+    <div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12 column">
 			<h3>
-				此处进行用户管理
+				您可以在此处创建一个新的用户。
 			</h3>
-			<br>
-			<!--div class="form-style8292">
-                 <form class="input-group" action="search" method="post" id="searchform"> <span class="input-group-addon"><i class="fa fa-pencil-square"
-                             aria-hidden="true"></i></span>
-                     <input type="text" class="form-control form-control8392" placeholder="此处键入查询" name="str"> 
-                     <span class="input-group-addon"><a href="#" onclick="document:searchform.submit()">SEARCH</a></span> 
-                 </form>
-            </div-->
 		</div>
 	</div>
+	<br>
 	<div class="row clearfix">
 		<div class="col-md-12 column">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>
-							UserId
-						</th>
-						<th>
-							UserName
-						</th>
-						<th>
-							DialNumber
-						</th>
-						<th>
-							Email
-						</th>
-						<th>
-							Gender
-						</th>
-						<th>
-							College
-						</th>
-						<th>
-							Major
-						</th>
-						<th>
-							Grade
-						</th>
-						<th>
-							Identity
-						</th>
-						<th>
-							操作
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					<%		
-                          	UserDAO userDao=new UserDAO();
-                          	List<User> userlist=(ArrayList)userDao.getall();
-                          	for(int i=0;i<userlist.size();i++){
-                         			User user2=(User)userlist.get(i);
-                    %>
-					<tr>
-						<td>
-							<%=user2.UserId %>
-						</td>
-						<td>
-							<%=user2.UserName %>
-						</td>
-						<td>
-							<%=user2.DialNumber %>
-						</td>
-						<td>
-							<%=user2.Email %>
-						</td>
-						<td>
-							<%=user2.Gender %>
-						</td>
-						<td>
-							<%=user2.College %>
-						</td>
-						<td>
-							<%=user2.Major %>
-						</td>
-						<td>
-							<%=user2.Grade %>
-						</td>
-						<%if(user2.IdentityID==1){ %>
-						<td>
-							<select id="IdentityID">
-								<option value="1">学生</option>
-								<option value="2">老师</option>
-								<option value="3">管理员</option>
-							</select>
-						</td>
-						<%}else if(user2.IdentityID==2){ %>
-						<td>
-							<select id="IdentityID">
-								<option value="2">老师</option>
-								<option value="1">学生</option>
-								<option value="3">管理员</option>
-							</select>
-						</td>
-						<%}else{ %>
-						<td>
-							<select id="IdentityID">
-								<option value="3">管理员</option>
-								<option value="1">学生</option>
-								<option value="2">老师</option>
-							</select>
-						</td>
-						<%
-                    	}
-						%>
-						<td>
-						<a href="#" onclick="roleupdate(<%=user2.UserId%>)">修改</a>
-						<a href="#" onclick="userdelete(<%=user2.UserId%>)">删除</a>
-						</td>
-						</tr>
-						<%
-							}
-						%>
-					
-				</tbody>
-			</table>
-			<a href="adduser.jsp"><button type="button" class="btn btn-default">增加新用户</button></a>
+				<h5>
+					此处为新用户信息。
+				</h5>
+			</div>
+		<div class="col-md-8 column">
+			<form class="form-horizontal" role="form" action="backAddUser" method="post">
+				<div class="form-group">
+					 <label for="input1" class="col-sm-2 control-label">UserName</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="input1" name="UserName" />
+					</div>
+				</div>
+				<div class="form-group">
+					 <label for="input2" class="col-sm-2 control-label" >DialNumber</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="input2" name="DialNumber" />
+					</div>
+				</div>
+				<div class="form-group">
+					 <label for="input3" class="col-sm-2 control-label">Email</label>
+					<div class="col-sm-10">
+						<input  type="email" class="form-control" id="input3" name="Email" />
+					</div>
+				</div>
+				<div class="form-group">
+					 <label for="input4" class="col-sm-2 control-label" >Gender</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="input4" name="Gender" >
+					</div>
+				</div>
+				<div class="form-group">
+					 <label for="input5" class="col-sm-2 control-label" >College</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="input5" name="College" >
+					</div>
+				</div>
+				<div class="form-group">
+					 <label for="input6" class="col-sm-2 control-label" >Major</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="input6" name="Major" >
+					</div>
+				</div>
+				<div class="form-group">
+					 <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+					<div class="col-sm-10">
+						<input type="password" class="form-control" id="inputPassword" name="Password" >
+					</div>
+				</div>
+				<div class="form-group">
+					 <label for="inputPassword3" class="col-sm-2 control-label">Identity</label>
+					<div class="col-sm-10">
+						<select class="selectpicker" name="Identity" data-style="btn-info" title="请选择" color="white"> 
+							<option value="1">学生</option>
+							<option value="2">老师</option>
+							<option value="3">管理员</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					 <label for="inputPassword3" class="col-sm-2 control-label">Grade</label>
+					<div class="col-sm-10">
+						<select class="selectpicker" name="Grade" data-style="btn-info" title="请选择" color="white"> 
+							<option value="大一">大一</option>
+							<option value="大二">大二</option>
+							<option value="大三">大三</option>
+							<option value="大四">大四</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						 <button type="submit" class="btn btn-default">创建</button>
+					</div>
+				</div>
+			</form>
+			</div>
 		</div>
-	</div>
-</div>
+		</div>
+
+
 </body>
 <footer class="navbar-fixed-bottom">
 <section class="footer-social">

@@ -63,7 +63,21 @@ public class UserDAO {
 			cp.returnConnection(c);
 		}).start();
 	}
-	
+	public void roleupdate(User user){
+		//new Thread(()->{
+			String sql="update user set IdentityID=? where UserId=?";
+			try(	Connection c=DriverManager.getConnection(URL,USER_NAME,USER_PASSWORD);
+					PreparedStatement ps=c.prepareStatement(sql);){
+				ps.setInt(1,user.IdentityID);
+				ps.setInt(2,user.UserId);
+				ps.execute();
+				
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+			//cp.returnConnection(c);
+		//}).start();
+	}
 	public void update(User user){
 		//new Thread(()->{
 			String sql="update user set UserName=?,DialNumber=?,Email=?,Password=?,Gender=?,College=?,Major=?,Grade=? where UserId=?";
