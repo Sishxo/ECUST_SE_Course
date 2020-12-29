@@ -19,3 +19,13 @@ function userdelete(userid){
 	}
 	
 }
+
+function roledelete(IdentityID){
+	var mymessage=confirm("确认删除吗？");
+	if(mymessage==true){
+	window.location = "roledelete?IdentityID=" + IdentityID;
+	}else{
+		alert("删除已取消");
+	}
+	
+}

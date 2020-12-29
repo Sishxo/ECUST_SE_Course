@@ -10,7 +10,7 @@
 	if(user==null){
 		response.sendRedirect("index.jsp");
 	}
-	//List<Teacher> searchlist=(ArrayList)request.getAttribute("searchlist");
+	List<Teacher> searchlist=(ArrayList)request.getAttribute("searchlist");
 	//System.out.println(searchlist);
 %>
 <head>
@@ -23,6 +23,10 @@
     <link href="css/animate.css" rel="stylesheet" type="text/css">
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <script src="js/manage.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
 </head>
 <body>
     <!-- ==========header mega navbar=======-->
@@ -63,168 +67,52 @@
 
 
     <!--======= welcome section on top background=====-->
-    
-
-
-<br>
-<div class="container">
+    <div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12 column">
 			<h3>
-				此处进行角色管理
+				您可以在此处创建一个新的角色。
 			</h3>
-			<br>
-			<!--div class="form-style8292">
-                 <form class="input-group" action="search" method="post" id="searchform"> <span class="input-group-addon"><i class="fa fa-pencil-square"
-                             aria-hidden="true"></i></span>
-                     <input type="text" class="form-control form-control8392" placeholder="此处键入查询" name="str"> 
-                     <span class="input-group-addon"><a href="#" onclick="document:searchform.submit()">SEARCH</a></span> 
-                 </form>
-            </div-->
 		</div>
 	</div>
+	<br>
 	<div class="row clearfix">
 		<div class="col-md-12 column">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>
-							IdentityID
-						</th>
-						<th>
-							IdentityDescription
-						</th>
-						<th>
-							查看拜师信息
-						</th>
-						<th>
-							查看学生信息
-						</th>
-						<th>
-							进行拜师
-						</th>
-						<th>
-							收徒管理
-						</th>
-						<th>
-							进行用户管理
-						</th>
-						<th>
-							进行角色管理
-						</th>
-						<th>
-							操作
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					<%		
-                          	IdentityDAO identityDAO=new IdentityDAO();
-                          	List<Identity> identitylist=(ArrayList)identityDAO.getall();
-                          	for(int i=0;i<identitylist.size();i++){
-                         		Identity identity=(Identity)identitylist.get(i);
-                         		int functions[]=identityDAO.getallfunction(identity.IdentityID);
-                    %>
-					<tr>
-						<td>
-							<%=identity.IdentityID %>
-						</td>
-						<td>
-							<%=identity.IdentityDescription %>
-						</td>
-						<%
-							if(functions[1]==1){
-							%>
-						<td>
-							<input type="checkbox" checked>
-						</td>
-						<%
-							}else{
-						%>
-						<td>
-							<input type="checkbox" >
-						</td>
-						<%} %>
-						<%
-							if(functions[2]==1){
-							%>
-						<td>
-							<input type="checkbox" checked>
-						</td>
-						<%
-							}else{
-						%>
-						<td>
-							<input type="checkbox" >
-						</td>
-						<%} %>
-						<%
-							if(functions[3]==1){
-							%>
-						<td>
-							<input type="checkbox" checked>
-						</td>
-						<%
-							}else{
-						%>
-						<td>
-							<input type="checkbox" >
-						</td>
-						<%} %>
-						<%
-							if(functions[4]==1){
-							%>
-						<td>
-							<input type="checkbox" checked>
-						</td>
-						<%
-							}else{
-						%>
-						<td>
-							<input type="checkbox" >
-						</td>
-						<%} %>
-						<%
-							if(functions[5]==1){
-							%>
-						<td>
-							<input type="checkbox" checked>
-						</td>
-						<%
-							}else{
-						%>
-						<td>
-							<input type="checkbox" >
-						</td>
-						<%} %>
-						<%
-							if(functions[6]==1){
-							%>
-						<td>
-							<input type="checkbox" checked>
-						</td>
-						<%
-							}else{
-						%>
-						<td>
-							<input type="checkbox" >
-						</td>
-						<%} %>
-						<td>
-						<a href="#" onclick="alert('修改成功')">修改</a>
-						<a href="#" onclick="roledelete(<%=identity.IdentityID%>)">删除</a>
-						</td>
-						</tr>
-						<%
-                          	}
-						%>
-					
-				</tbody>
-			</table>
-			<a href="addrole.jsp"><button type="button" class="btn btn-default">增加新角色</button></a>
+				<h5>
+					此处为新角色信息。
+				</h5>
+			</div>
+		<div class="col-md-8 column">
+			<form class="form-horizontal" role="form" action="addrole" method="post">
+				<div class="form-group">
+					 <label for="input1" class="col-sm-2 control-label">IdentityDescription</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="input1" name="IdentityDescription" />
+					</div>
+				</div>
+				<div class="form-group">
+					 <label for="input2" class="col-sm-2 control-label" >Function</label>
+					<div class="col-sm-10">
+						<input type="checkbox"  name="function" value="1"/>查看拜师信息<br>
+						<input type="checkbox"  name="function" value="2"/>查看学生信息<br>
+						<input type="checkbox"  name="function" value="3"/>进行拜师<br>
+						<input type="checkbox"  name="function" value="4"/>收徒管理<br>
+						<input type="checkbox"  name="function" value="5"/>进行用户管理<br>
+						<input type="checkbox"  name="function" value="6"/>进行角色管理
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						 <button type="submit" class="btn btn-default">创建</button>
+					</div>
+				</div>
+			</form>
+			</div>
 		</div>
-	</div>
-</div>
+		</div>
+
+
 </body>
 <footer class="navbar-fixed-bottom">
 <section class="footer-social">

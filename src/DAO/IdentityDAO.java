@@ -24,13 +24,25 @@ public class IdentityDAO {
 	}
 	
 	public void add(Identity identity){
-		String sql="insert into Identity values(?,?)";
+		String sql="insert into Identity values(null,?)";
 		try(
 			Connection c=DriverManager.getConnection(URL,USER_NAME,USER_PASSWORD);
 			PreparedStatement ps=c.prepareStatement(sql);
 		){
-			ps.setInt(1, identity.IdentityID);
-			ps.setString(2, identity.IdentityDescription);
+			ps.setString(1, identity.IdentityDescription);
+			ps.execute();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void delete(int IdentityID){
+		String sql="delete from identity where IdentityID=?";
+		try(
+			Connection c=DriverManager.getConnection(URL,USER_NAME,USER_PASSWORD);
+			PreparedStatement ps=c.prepareStatement(sql);
+		){
+			ps.setInt(1, IdentityID);
 			ps.execute();
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -49,5 +61,77 @@ public class IdentityDAO {
 			}catch(SQLException e){
 				e.printStackTrace();
 			}
+	}
+	
+	public List getall(){
+		String sql="select * from Identity";
+		ResultSet rs=null;
+		List<Identity> identitylist=new ArrayList<Identity>();
+		try(
+			Connection c=DriverManager.getConnection(URL,USER_NAME,USER_PASSWORD);
+			PreparedStatement ps=c.prepareStatement(sql);
+			){
+			rs=ps.executeQuery();
+			while(rs.next()){
+				Identity identity=new Identity();
+				identity.setIdentityID(rs.getInt("IdentityID"));
+				identity.setIdentityDescription(rs.getString("IdentityDescription"));
+				identitylist.add(identity);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return identitylist;
+	}
+	
+	public int[] getallfunction(int IdentityID){
+		String sql="select * from identityfunction where IdentityID=?";
+		ResultSet rs=null;
+		List<Integer> functionlist=new ArrayList<Integer>();
+		int functions[]=null;
+		functions=new int[7];
+		try(
+			Connection c=DriverManager.getConnection(URL,USER_NAME,USER_PASSWORD);
+			PreparedStatement ps=c.prepareStatement(sql);
+			){
+			ps.setInt(1, IdentityID);
+			rs=ps.executeQuery();
+			while(rs.next()){
+				int FunctionID=rs.getInt("FunctionID");
+				functionlist.add(FunctionID);
+			}
+			for(int i=0;i<7;i++){
+				functions[i]=0;
+			}
+			for(int i=1;i<=6;i++){
+				for(int j=0;j<functionlist.size();j++){
+					if(functionlist.get(j)==i){
+						functions[i]=1;
+					}
+				}
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return functions;
+	}
+	
+	public Identity get(String IdentityDescription){
+		String sql="select * from Identity where IdentityDescription=?";
+		Identity identity=new Identity();
+			try(
+			Connection c=DriverManager.getConnection(URL,USER_NAME,USER_PASSWORD);
+			PreparedStatement ps=c.prepareStatement(sql);
+			){
+			ps.setString(1,IdentityDescription);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next()){
+				identity.setIdentityID(rs.getInt("IdentityID"));
+				identity.setIdentityDescription(rs.getString("IdentityDescription"));
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return identity;
 	}
 }

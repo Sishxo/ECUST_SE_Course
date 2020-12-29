@@ -38,6 +38,15 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>AddRoleServlet</servlet-name>
+		<servlet-class>servlet.AddRoleServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddRoleServlet</servlet-name>
+		<url-pattern>/addrole</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>UserUpdateServlet</servlet-name>
 		<servlet-class>servlet.UserUpdateServlet</servlet-class>
 	</servlet>
@@ -143,5 +152,14 @@
 	<servlet-mapping>
 		<servlet-name>UserDeleteServlet</servlet-name>
 		<url-pattern>/userdelete</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>RoleDeleteServlet</servlet-name>
+		<servlet-class>servlet.RoleDeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RoleDeleteServlet</servlet-name>
+		<url-pattern>/roledelete</url-pattern>
 	</servlet-mapping>
 </web-app>
